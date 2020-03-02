@@ -12,14 +12,14 @@ pipeline {
     {
         stage('Start') {
             steps {
-                echo 'Hello ${params.name}'
-                echo 'We useing locatin is ${params.region} an scope of clucter is ${params.scope}'
+                echo "Hello ${params.name}"
+                echo "We using location is ${params.region} and scope of clucter is number ${params.scope}"
             }
         }
         
         stage('End') {
             steps {
-                echo 'Bye ${params.name}'
+                echo "Bye ${params.name}"
             }
         }
     }
