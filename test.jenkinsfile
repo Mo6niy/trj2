@@ -1,11 +1,5 @@
 pipeline {
-agent
-    {
-        node {
-                label 'master'
-                customWorkspace "${env.JobPath}"
-              }
-    }
+agent any
     stages 
     {
         stage('Start') {
@@ -13,13 +7,7 @@ agent
                 echo 'Hello'
             }
         }
-        stage ('Invoke_pipelineA') {
-            steps {
-                build job: 'pipelineA', parameters: [
-                string(name: 'param1', value: "value1")
-                ]
-            }
-        }
+        
         stage('End') {
             steps {
                 echo 'Bye'
@@ -27,4 +15,4 @@ agent
         }
     }
 }
-© 2020 GitHub, Inc.
+
