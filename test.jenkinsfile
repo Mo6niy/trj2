@@ -1,16 +1,25 @@
 pipeline {
-agent any
+    agent any
+
+    parameters {
+        string(name: 'name', defaultValue: 'Anatoli', description: 'Your first name')
+        string(name: 'scope', defaultValue: '3', description: 'scope of cluster')
+        string(name: 'region', defaultValue: 'west US', description: 'location')
+
+    }
+
     stages 
     {
         stage('Start') {
             steps {
-                echo 'Hello'
+                echo 'Hello ${name}'
+                echo 'We useing locatin is ${region} an scope of clucter is ${scope}'
             }
         }
         
         stage('End') {
             steps {
-                echo 'Bye'
+                echo 'Bye ${name}'
             }
         }
     }
