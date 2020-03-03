@@ -20,7 +20,7 @@ pipeline {
         stage('End') {
             steps {
                 sh '''
-                'echo "Build is ok"'
+                echo "Build is ok"
                  '''
                 
                 echo "Bye ${params.name}"
