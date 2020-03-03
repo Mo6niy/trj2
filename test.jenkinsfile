@@ -14,6 +14,7 @@ pipeline {
             steps {
                 echo "Hello ${params.name}"
                 echo "We using location is ${params.region} and scope of clucter is number ${params.scope}"
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
             }
         }
         
