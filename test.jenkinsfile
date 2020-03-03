@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                 echo "Build is ok"
                  '''
-                echo "this is additional test parrameter  ${addpar}"
+                echo "this is additional test parrameter  ${params.addpar}"
                 echo "Bye ${params.name}"
             }
         }
