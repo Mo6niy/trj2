@@ -20,7 +20,7 @@ pipeline {
         stage('End') {
             steps {
                 sh '''
-                'echo "Build number ${env.BUILD_ID} is ok"'
+                'echo "Build is ok"'
                  '''
                 
                 echo "Bye ${params.name}"
