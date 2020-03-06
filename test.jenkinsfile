@@ -22,6 +22,11 @@ pipeline {
             steps {
                 sh '''
                 pwd
+                echo '--------------------'
+                cd $WORKSPACE
+                echo '--------------------'
+                pwd
+                
                 ls
                 cat ./json
                 echo "Build is ok"
