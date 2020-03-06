@@ -21,6 +21,9 @@ pipeline {
         stage('End') {
             steps {
                 sh '''
+                pwd
+                ls
+                cat ./json
                 echo "Build is ok"
                  '''
                 echo "this is additional test parrameter  ${params.addpar}"
