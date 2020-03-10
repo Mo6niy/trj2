@@ -2,7 +2,7 @@ pipeline {
     agent any
     // Create parameters for accept from remote trigger
     parameters {
-        string(name: 'CLOUD_TYPE')
+        string(name: 'task_id')
         
     }
     // Execute stages
@@ -12,7 +12,7 @@ pipeline {
                 echo "Hello my parameters are:"
                 script {
                     // DEBUG: Print values to console
-                    println "CLOUD_TYPE: ${CLOUD_TYPE} \n" +
+                    println "task_id: ${task_id}"
                 }
             }
         }

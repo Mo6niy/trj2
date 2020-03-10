@@ -8,14 +8,14 @@ pipeline {
     // Accept parameter from triger
     parameters {
         string(name: 'task_id')
-         string(name: 'CLOUD_TYPE', defaultValue: 'aaaaaaa', description: 'scope of cluster')
+ 
         
     }
     // Create global available environment variables
 
     // Execute stages
     stages {
-        stage("Get variables from WorkerAPI") {
+        stage("Get JSON") {
             steps{
                 script {
 
@@ -34,27 +34,15 @@ pipeline {
     post { 
         success { 
             script{
-                // Execute different jobs based on cloud type value
-                if("$CLOUD_TYPE" == "aws"){
+
                     echo "Cloud type is: $CLOUD_TYPE"
                     // Build Required Job with providing parameters
                     build job: 'Pipe2', 
                         parameters: [
-                            string(name: 'CLOUD_TYPE', value: "$CLOUD_TYPE" )
+                            string(name: 'task_id', value: "${params.task_id}" )
                            
                         ]
-                } else if ("$CLOUD_TYPE" == "azure") {
-                    echo "Cloud type is: $CLOUD_TYPE"
-                    // Build Required Job with providing parameters
-                    build job: 'Pipe3', 
-                        parameters: [
-                            string(name: 'CLOUD_TYPE', value: "$CLOUD_TYPE" )
-                           
-                        ]
-                } else {
-                    echo "Not supported cloud type"
-                }
-            }
+                } 
         }
     }
 }
