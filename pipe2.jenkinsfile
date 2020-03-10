@@ -9,11 +9,7 @@ pipeline {
     stages {
         stage('test stage') {
             steps {
-                echo "Hello my parameters are:"
-                script {
-                    // DEBUG: Print values to console
-                    println "task_id: ${task_id}"
-                }
+                echo "Hello my parameters are: ${task_id}"
             }
         }
     }
