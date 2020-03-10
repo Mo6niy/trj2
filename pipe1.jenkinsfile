@@ -8,12 +8,11 @@ pipeline {
     // Accept parameter from triger
     parameters {
         string(name: 'task_id')
+         string(name: 'CLOUD_TYPE', defaultValue: 'aaaaaaa', description: 'scope of cluster')
+        
     }
     // Create global available environment variables
-    environment { 
 
-        CLOUD_TYPE = "none"
-    }
     // Execute stages
     stages {
         stage("Get variables from WorkerAPI") {
