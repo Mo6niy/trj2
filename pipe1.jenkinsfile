@@ -26,9 +26,14 @@ pipeline {
                     //
                   //  def response =                    
                   //  def jsonObj = readJSON text: response.content
+                    import groovy.json.JsonSlurper
+
+                    def inputFile = new File("$WORKSPACE/json")
+                    def InputJSON = new JsonSlurper().parseText(inputFile.text)
+                    InputJSON.each{ println it }
                     
                     // Get values from JSON
-                   // def cloudType = jsonObj.cloud_type
+                    def cloudType = jsonObj.cloud_type
     
                     // DEBUG: Print values to console
                     println "CLOUD_TYPE: ${cloudType}" 
@@ -47,7 +52,7 @@ pipeline {
                 if("$CLOUD_TYPE" == "aws"){
                     echo "Cloud type is: $CLOUD_TYPE"
                     // Build Required Job with providing parameters
-                    build job: 'Pipeline2', 
+                    build job: 'Pipe2', 
                         parameters: [
                             string(name: 'CLOUD_TYPE', value: "$CLOUD_TYPE" )
                            
@@ -55,7 +60,7 @@ pipeline {
                 } else if ("$CLOUD_TYPE" == "azure") {
                     echo "Cloud type is: $CLOUD_TYPE"
                     // Build Required Job with providing parameters
-                    build job: 'Pipeline-002', 
+                    build job: 'Pipe3', 
                         parameters: [
                             string(name: 'CLOUD_TYPE', value: "$CLOUD_TYPE" )
                            
