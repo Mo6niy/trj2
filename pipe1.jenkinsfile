@@ -11,10 +11,7 @@ pipeline {
         stage("Get JSON") {
             steps{
                 script {
-
-                 echo "Hello ${params.task_id}"
-                  
-                   
+                 echo "Hello ${params.task_id}"  
                 }
             }
         }
