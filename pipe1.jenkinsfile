@@ -11,15 +11,8 @@ pipeline {
     }
     // Create global available environment variables
     environment { 
-        // Host with WorkerIP
-        API_ADDRESS = "192.168.100.133"
-        // Additional variables
+
         CLOUD_TYPE = "none"
-        ACCESS_KEY = "none"
-        SECRET_KEY = "none"
-        REGION = "none"
-        NODE_COUNT = "none"
-        INSTANCE_TYPE = "none"
     }
     // Execute stages
     stages {
@@ -31,32 +24,18 @@ pipeline {
                     // Requires: https://github.com/jenkinsci/http-request-plugin
                     // Available in Jenkins Plugins
                     //
-                    def response = httpRequest "http://${API_ADDRESS}:4567/api/v1/config/${task_id}"                    
-                    def jsonObj = readJSON text: response.content
+                  //  def response =                    
+                  //  def jsonObj = readJSON text: response.content
                     
                     // Get values from JSON
-                    def cloudType = jsonObj.cloud_type
-                    def accessKeyId = jsonObj.cloud."${cloudType}".credentials.access_key_id
-                    def secretAcessKey = jsonObj.cloud."${cloudType}".credentials.secret_acess_key
-                    def region = jsonObj.cloud."${cloudType}".region
-                    def nodeCount = jsonObj.cloud."${cloudType}".services.kubernetes.cluster.worker_nodes.count
-                    def instanceType = jsonObj.cloud."${cloudType}".services.kubernetes.cluster.worker_nodes.instance_type
-                    
+                   // def cloudType = jsonObj.cloud_type
+    
                     // DEBUG: Print values to console
-                    println "CLOUD_TYPE: ${cloudType} \n" +
-                            "ACCESS_KEY: ${accessKeyId} \n" +
-                            "SECRET_KEY: ${secretAcessKey} \n" +
-                            "REGION: ${region} \n" +
-                            "NODE_COUNT: ${nodeCount} \n" +
-                            "INSTANCE_TYPE: ${instanceType}"
-
+                    println "CLOUD_TYPE: ${cloudType}" 
+                    
                     // Set variable with cloud type to use in post action  
                     CLOUD_TYPE="${cloudType}"
-                    ACCESS_KEY="${accessKeyId}"
-                    SECRET_KEY="${secretAcessKey}"
-                    REGION="${region}"
-                    NODE_COUNT="${nodeCount}"
-                    INSTANCE_TYPE="${instanceType}"
+                   
                 }
             }
         }
@@ -68,38 +47,18 @@ pipeline {
                 if("$CLOUD_TYPE" == "aws"){
                     echo "Cloud type is: $CLOUD_TYPE"
                     // Build Required Job with providing parameters
-                    build job: 'Pipeline-002', 
+                    build job: 'Pipeline2', 
                         parameters: [
-                            string(name: 'CLOUD_TYPE', value: "$CLOUD_TYPE" ),
-                            string(name: 'ACCESS_KEY', value: "$ACCESS_KEY" ),
-                            string(name: 'SECRET_KEY', value: "$SECRET_KEY" ),
-                            string(name: 'REGION', value: "$REGION" ),
-                            string(name: 'NODE_COUNT', value: "$NODE_COUNT" ),
-                            string(name: 'INSTANCE_TYPE', value: "$INSTANCE_TYPE")
+                            string(name: 'CLOUD_TYPE', value: "$CLOUD_TYPE" )
+                           
                         ]
-                } else if ("$CLOUD_TYPE" == "gcp"){
-                    echo "Cloud type is: $CLOUD_TYPE"
-                    // Build Required Job with providing parameters
-                    build job: 'Pipeline-002', 
-                        parameters: [
-                            string(name: 'CLOUD_TYPE', value: "$CLOUD_TYPE" ),
-                            string(name: 'ACCESS_KEY', value: "$ACCESS_KEY" ),
-                            string(name: 'SECRET_KEY', value: "$SECRET_KEY" ),
-                            string(name: 'REGION', value: "$REGION" ),
-                            string(name: 'NODE_COUNT', value: "$NODE_COUNT" ),
-                            string(name: 'INSTANCE_TYPE', value: "$INSTANCE_TYPE")
-                        ] 
                 } else if ("$CLOUD_TYPE" == "azure") {
                     echo "Cloud type is: $CLOUD_TYPE"
                     // Build Required Job with providing parameters
                     build job: 'Pipeline-002', 
                         parameters: [
-                            string(name: 'CLOUD_TYPE', value: "$CLOUD_TYPE" ),
-                            string(name: 'ACCESS_KEY', value: "$ACCESS_KEY" ),
-                            string(name: 'SECRET_KEY', value: "$SECRET_KEY" ),
-                            string(name: 'REGION', value: "$REGION" ),
-                            string(name: 'NODE_COUNT', value: "$NODE_COUNT" ),
-                            string(name: 'INSTANCE_TYPE', value: "$INSTANCE_TYPE")
+                            string(name: 'CLOUD_TYPE', value: "$CLOUD_TYPE" )
+                           
                         ]
                 } else {
                     echo "Not supported cloud type"
