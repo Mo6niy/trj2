@@ -18,30 +18,14 @@ pipeline {
         stage("Get variables from WorkerAPI") {
             steps{
                 script {
-                    
-                    // REST Call to WorkerAPI endpoint
-                    // Requires: https://github.com/jenkinsci/http-request-plugin
-                    // Available in Jenkins Plugins
-                    //
-                  //  def response =                    
-                  //  def jsonObj = readJSON text: response.content
 
-                    import groovy.json.JsonSlurper
+                sh...
 
-def inputFile = new File("./json")
-def InputJSON = new JsonSlurper().parseFile(inputFile, 'UTF-8')
-InputJSON.each{ println it }
+                echo "${params.task_id}"
 
 
-                    
-                    // Get values from JSON
-                   // def cloudType = jsonObj.cloud_type
-    
-                    // DEBUG: Print values to console
-                   // println "CLOUD_TYPE: ${cloudType}" 
-                    
-                    // Set variable with cloud type to use in post action  
-                   // CLOUD_TYPE="${cloudType}"
+                ...  
+                  
                    
                 }
             }
