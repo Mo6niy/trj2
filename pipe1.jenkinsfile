@@ -15,6 +15,7 @@ pipeline {
                  sh '''
                  ls
                  export type=$(cat ./json | /tmp/jq .cloud_type)
+                 echo $type
 
                  '''
                 }
