@@ -14,7 +14,7 @@ pipeline {
                  echo "Hello ${params.task_id}" 
                  sh '''
                  ls
-                 cat ./json
+                 cat ./json | /tmp/jq .cloud_type
 
                  '''
                 }
