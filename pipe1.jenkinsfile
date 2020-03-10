@@ -19,12 +19,12 @@ pipeline {
             steps{
                 script {
 
-                sh...
+                sh '''
 
                 echo "${params.task_id}"
 
 
-                ...  
+                ''' 
                   
                    
                 }
