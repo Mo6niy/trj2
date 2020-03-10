@@ -3,25 +3,16 @@ pipeline {
     // Create parameters for accept from remote trigger
     parameters {
         string(name: 'CLOUD_TYPE')
-        string(name: 'ACCESS_KEY')
-        string(name: 'SECRET_KEY')
-        string(name: 'REGION')
-        string(name: 'NODE_COUNT')
-        string(name: 'INSTANCE_TYPE')
+        
     }
     // Execute stages
     stages {
-        stage('Terraform or Whatever Stage') {
+        stage('test stage') {
             steps {
                 echo "Hello my parameters are:"
                 script {
                     // DEBUG: Print values to console
                     println "CLOUD_TYPE: ${CLOUD_TYPE} \n" +
-                            "ACCESS_KEY: ${ACCESS_KEY} \n" +
-                            "SECRET_KEY: ${SECRET_KEY} \n" +
-                            "REGION: ${REGION} \n" +
-                            "NODE_COUNT: ${NODE_COUNT} \n" +
-                            "INSTANCE_TYPE: ${INSTANCE_TYPE}"
                 }
             }
         }
