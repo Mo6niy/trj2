@@ -14,7 +14,7 @@ pipeline {
                  echo "Hello ${params.task_id}" 
                  sh '''
                  ls
-                 cat ./json | /tmp/jq .cloud_type
+                 export type=$(cat ./json | /tmp/jq .cloud_type)
 
                  '''
                 }
@@ -25,7 +25,7 @@ pipeline {
         success { 
             script{
 
-                    echo "type is: ${params.task_id}"
+                    echo "This is post action, task id is: ${params.task_id}"
                     // Build Required Job with providing parameters
                     build job: 'Pipe2', 
                         parameters: [
