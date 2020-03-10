@@ -32,13 +32,13 @@ pipeline {
                     InputJSON.each{ println it }
                     
                     // Get values from JSON
-                    def cloudType = jsonObj.cloud_type
+                   // def cloudType = jsonObj.cloud_type
     
                     // DEBUG: Print values to console
-                    println "CLOUD_TYPE: ${cloudType}" 
+                   // println "CLOUD_TYPE: ${cloudType}" 
                     
                     // Set variable with cloud type to use in post action  
-                    CLOUD_TYPE="${cloudType}"
+                   // CLOUD_TYPE="${cloudType}"
                    
                 }
             }
