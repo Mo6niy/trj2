@@ -4,14 +4,34 @@ pipeline {
     agent any
     
     parameters {
-        string(name: 'task_id')  
+        string(name: 'CLUSTER_NAME', defaultValue: 'null')
+        string(name: 'REGION', defaultValue: 'null')
+        string(name: 'MULTI_AZ', defaultValue: 'null')
+        string(name: 'ACTION_TYPE', defaultValue: 'null')
+        string(name: 'K8S_VERSION', defaultValue: 'null')
+        string(name: 'NODE_TYPE', defaultValue: 'null')
+        string(name: 'NODE_IMAGE', defaultValue: 'null')
+        string(name: 'NODES_MIN', defaultValue: 'null')
+        string(name: 'NODES_MAX', defaultValue: 'null')
+        string(name: 'NODES_INITIAL', defaultValue: 'null')
+        string(name: 'VIRTUAL_NETWORK', defaultValue: 'null')
+        string(name: 'CLOUD_PROVIDER', defaultValue: 'null')
+        string(name: 'GCP_PROJECT', defaultValue: 'null')
+        string(name: 'GCP_CREDENTIALS', defaultValue: 'null')
+        string(name: 'AWS_ACCESS_KEY_ID', defaultValue: 'null')
+        string(name: 'AWS_SECRET_ACCESS_KEY', defaultValue: 'null')
+        string(name: 'ARM_SUBSCRIPTION_ID', defaultValue: 'null')
+        string(name: 'ARM_CLIENT_ID', defaultValue: 'null')
+        string(name: 'ARM_CLIENT_SECRET', defaultValue: 'null')
+        string(name: 'ARM_TENANT_ID', defaultValue: 'null')
     }
 
     stages {
         stage("Get JSON") {
             steps{
                 script {
-                 echo "Hello ${params.task_id}" 
+                 echo "Hello ${params.CLOUD_PROVIDER}"
+                 echo "Hello ${MULTI_AZ}" 
                  sh '''
                  ls
                  export type=$(cat ./json | /tmp/jq .cloud_type)
