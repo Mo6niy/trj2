@@ -1,46 +1,84 @@
 {
-  "created_at": "2020-02-24T13:50:38.237+00:00",
-  "updated_at": "2020-02-24T13:50:38.237+00:00",
-  "id": "a2ed1ca1-15a9-4029-b388-291b8991669c",
-  "tenant": {
-    "name": "",
-    "contacts": {
-      "email": {},
-      "slack": {}
+  "parameter": [
+    {
+      "name": "ID",
+      "value": "string"
+    },  
+    {
+      "name": "CLUSTER_NAME",
+      "value": "[a-z0-9-] "
+    },
+    {
+      "name": "REGION",
+      "value": "choice"
+    },
+    {
+      "name": "MULTI_AZ",
+      "value": "bool"
+    },
+    {
+      "name": "ACTION_TYPE",
+      "value": "choice: create, destroy"
+    },
+    {
+      "name": "K8S_VERSION",
+      "value": "choice"
+    },
+    {
+      "name": "NODE_TYPE",
+      "value": "choice"
+    },
+    {
+      "name": "NODE_IMAGE",
+      "value": "string"
+    },
+    {
+      "name": "NODES_MIN",
+      "value": "int"
+    },
+    {
+      "name": "NODES_MAX",
+      "value": "int"
+    },
+    {
+      "name": "NODES_INITIAL",
+      "value": "int"
+    },
+    {
+      "name": "VIRTUAL_NETWORK",
+      "value": "[10.0-255.0.0/16-28]"
+    },
+    {
+      "name": "GCP_PROJECT",
+      "value": "string"
+    },
+    {
+      "name": "GCP_CREDENTIALS",
+      "value": "file"
+    },
+    {
+      "name": "AWS_ACCESS_KEY_ID",
+      "value": "string"
+    },
+    {
+      "name": "AWS_SECRET_ACCESS_KEY",
+      "value": "string"
+    },
+    {
+      "name": "ARM_SUBSCRIPTION_ID",
+      "value": "string"
+    },
+    {
+      "name": "ARM_CLIENT_ID",
+      "value": "string"
+    },
+    {
+      "name": "ARM_CLIENT_SECRET",
+      "value": "string"
+    },
+    {
+      "name": "ARM_TENANT_ID",
+      "value": "string"
     }
-  },
-  "cloud_type": "aws",
-  "cloud": {
-    "aws": {
-      "credentials": {
-        "access_key_id": "OVERRIDE_JSON_KEY",
-        "secret_acess_key": "OVERRIDE_SECRET"
-      },
-      "region": "us-east-1",
-      "services": {
-        "kubernetes": {
-          "cluster": {
-            "worker_nodes": {
-              "count": 4,
-              "instance_type": "t2.medium"
-            }
-          }
-        }
-      }
-    },
-    "azure": null,
-    "gcp": null
-  },
-  "kubernetes": {
-    "applications": {
-      "web": {
-        "dns_name": "web.mydomain.com",
-        "service_type": {
-          "name": "nginx",
-          "version": "1.0.0"
-        }
-      }
-    },
-    "stack_name": "default"
-  }
+  ]
 }

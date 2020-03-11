@@ -4,6 +4,7 @@ pipeline {
     agent any
     
     parameters {
+        string(name: 'ID', defaultValue: '')
         string(name: 'CLUSTER_NAME', defaultValue: '')
         string(name: 'REGION', defaultValue: '')
         string(name: 'MULTI_AZ', defaultValue: '')
@@ -50,7 +51,27 @@ pipeline {
                     // Build Required Job with providing parameters
                     build job: 'Pipe2', 
                         parameters: [
-                            string(name: 'task_id', value: "${params.CLOUD_PROVIDER}" )
+                            string(name: 'ID', value: "${params.ID}" )
+                            string(name: 'CLUSTER_NAME', value: "${params.CLUSTER_NAME}" )
+                            string(name: 'REGION', value: "${params.REGION}" )
+                            string(name: 'MULTI_AZ', value: "${params.MULTI_AZ}" )
+                            string(name: 'ACTION_TYPE', value: "${params.ACTION_TYPE}" )
+                            string(name: 'K8S_VERSION', value: "${params.K8S_VERSION}" )
+                            string(name: 'NODE_TYPE', value: "${params.NODE_TYPE}" )
+                            string(name: 'NODE_IMAGE', value: "${params.NODE_IMAGE}" )
+                            string(name: 'NODES_MIN', value: "${params.NODES_MIN}" )
+                            string(name: 'NODES_MAX', value: "${params.NODES_MAX}" )
+                            string(name: 'NODES_INITIAL', value: "${params.NODES_INITIAL}" )
+                            string(name: 'VIRTUAL_NETWORK', value: "${params.VIRTUAL_NETWORK}" )
+                            string(name: 'CLOUD_PROVIDER', value: "${params.CLOUD_PROVIDER}" )
+                            string(name: 'GCP_PROJECT', value: "${params.GCP_PROJECT}" )
+                            string(name: 'GCP_CREDENTIALS', value: "${params.GCP_CREDENTIALS}" )
+                            string(name: 'AWS_ACCESS_KEY_ID', value: "${params.AWS_ACCESS_KEY_ID}" )
+                            string(name: 'AWS_SECRET_ACCESS_KEY', value: "${params.AWS_SECRET_ACCESS_KEY}" )
+                            string(name: 'ARM_SUBSCRIPTION_ID', value: "${params.ARM_SUBSCRIPTION_ID}" )
+                            string(name: 'ARM_CLIENT_ID', value: "${params.ARM_CLIENT_ID}" )
+                            string(name: 'ARM_CLIENT_SECRET', value: "${params.ARM_CLIENT_SECRET}" )
+                            string(name: 'ARM_TENANT_ID', value: "${params.ARM_TENANT_ID}" )
                             
                            
                         ]
