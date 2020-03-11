@@ -31,7 +31,7 @@ pipeline {
             steps{
                 script {
                  echo "Hello ${params.CLOUD_PROVIDER}"
-                 echo "Hello ${MULTI_AZ}" 
+                 echo "Hello ${params.MULTI_AZ}" 
                  sh '''
                  ls
                  export type=$(cat ./json | /tmp/jq .cloud_type)
@@ -46,11 +46,12 @@ pipeline {
         success { 
             script{
 
-                    echo "This is post action, task id is: ${params.task_id}"
+                    echo "This is post action, task id is: ${params.CLOUD_PROVIDER}"
                     // Build Required Job with providing parameters
                     build job: 'Pipe2', 
                         parameters: [
-                            string(name: 'task_id', value: "${params.task_id}" )
+                            string(name: 'task_id', value: "${params.CLOUD_PROVIDER}" )
+                            
                            
                         ]
                 } 
