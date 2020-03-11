@@ -15,16 +15,8 @@ pipeline {
         string(name: 'NODES_INITIAL', defaultValue: '')
         string(name: 'VIRTUAL_NETWORK', defaultValue: '')
         string(name: 'CLOUD_PROVIDER', defaultValue: '')
-        string(name: 'GCP_PROJECT', defaultValue: '')
-        string(name: 'GCP_CREDENTIALS', defaultValue: '')
         string(name: 'AWS_ACCESS_KEY_ID', defaultValue: '')
-        string(name: 'AWS_SECRET_ACCESS_KEY', defaultValue: '')
-        string(name: 'ARM_SUBSCRIPTION_ID', defaultValue: '')
-        string(name: 'ARM_CLIENT_ID', defaultValue: '')
-        string(name: 'ARM_CLIENT_SECRET', defaultValue: '')
-        string(name: 'ARM_TENANT_ID', defaultValue: '')
-        
-        
+        string(name: 'AWS_SECRET_ACCESS_KEY', defaultValue: '')   
     }
     // Execute stages
     stages {
