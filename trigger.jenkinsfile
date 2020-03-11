@@ -70,6 +70,7 @@ pipeline {
                         string(name: 'ACTION_TYPE', value: params.ACTION_TYPE),
                         string(name: 'GCP_CREDETIALS', value: params.GCP_CREDETIALS),
                         string(name: 'GCP_PROJECT', value: params.GCP_PROJECT),
+                        string(name: 'CLOUD_PROVIDER', value: params.CLOUD_PROVIDER)
                     ]
             }
         }

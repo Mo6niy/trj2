@@ -2,7 +2,6 @@ pipeline {
     agent any
     // Create parameters for accept from remote trigger
     parameters {
-        string(name: 'ID', defaultValue: '')
         string(name: 'CLUSTER_NAME', defaultValue: '')
         string(name: 'REGION', defaultValue: '')
         string(name: 'MULTI_AZ', defaultValue: '')
@@ -22,7 +21,8 @@ pipeline {
     stages {
         stage('test stage') {
             steps {
-                echo "Hello my parameter ID is: ${params.ID}"
+                echo "Hello my parameter cloud is: ${params.CLOUD_PROVIDER}"
+                echo "Hello my parameter k8s name is: ${params.CLUSTER_NAME}"
             }
         }
     }
