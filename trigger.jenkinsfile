@@ -49,7 +49,7 @@ pipeline {
 
                     echo "This is post action, task id is: ${params.CLOUD_PROVIDER}"
                     // Build Required Job with providing parameters
-                    build job: 'Pipe2', 
+                    build job: 'DeployEKS', 
                         parameters: [
                             string(name: 'ID', value: "${params.ID}" )
                             string(name: 'CLUSTER_NAME', value: "${params.CLUSTER_NAME}" )
