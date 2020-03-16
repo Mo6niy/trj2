@@ -1,3 +1,14 @@
-curl -X POST 127.0.0.1/job/test_pipeline/buildWithParameters \
+
+
+curl -X POST http://127.0.0.1/job/test_pipeline/buildWithParameters \
   --user admin:1116cb0f8d802847e3daf4f57ee0cc244f \
-  --data-urlencode json='{"parameter": [{"name":"name", "value":"Garry"}, {"name":"scope", "value":"2"}]}'
+  --data-urlencode json='{"parameter": [{"name":"name", "value":"Garry"}, {"name":"scope", "value":"2"}, {"name":"region", "value":"west US"}]}'
+  ================================
+
+https://jenkins.exadel.io/job/CrossKube/job/main_job/buildWithParameters?token=mbashmetovtrgrjo&CLUSTER_NAME=test16
+
+
+
+127.0.0.01/job/test_pipeline/buildWithParameters?token=dfgtrecvSSDD234&name=Garry&scope=2&region=germany
+
+ curl -X POST 127.0.0.1/job/test_pipeline/buildWithParameters   --user admin:1116cb0f8d802847e3daf4f57ee0cc244f   --data-urlencode json='{"parameter": [{"name":"name", "value":"Garry"}, {"name":"scope", "value":"2"}]}'
