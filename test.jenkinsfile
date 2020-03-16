@@ -20,10 +20,11 @@ pipeline {
         
         stage('parameters') {
             steps {
-                sh '''
+                sh """
                
                 echo "This is additional test parrameter  ${params}"
                 echo "Bye ${params.name}"
+                """
             }
         }
     }
