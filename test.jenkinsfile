@@ -1,9 +1,7 @@
 pipeline {
     agent any
         parameters {
-        string(name: 'name', defaultValue: '', description: 'Your first name')
-        string(name: 'scope', defaultValue: '3', description: 'scope of cluster')
-        string(name: 'region', defaultValue: 'west US', description: 'location')
+        
 
     }
     
