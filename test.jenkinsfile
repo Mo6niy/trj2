@@ -4,24 +4,17 @@ pipeline {
         string(name: 'NAME', defaultValue: '', description: 'Your first name')
         string(name: 'SCOPE', defaultValue: '', description: 'scope of cluster')
         string(name: 'REGION', defaultValue: '', description: 'location')
-
     }
-    
-
-    stages 
-    {
-       stages {
+       
+    stages {
         stage('Clean Workspace') {
             steps {
                 cleanWs()
             }
-        }
-
-        
+        }   
         stage('parameters') {
             steps {
                 sh """
-               
                 echo "This is additional test parrameter  ${params}"
                 echo "Bye ${params.name}"
                 """
@@ -29,5 +22,5 @@ pipeline {
         }
     }
 }
-}
+
 
