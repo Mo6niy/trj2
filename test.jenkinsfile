@@ -1,31 +1,27 @@
 pipeline {
     agent any
         parameters {
-        string(name: 'name', defaultValue: 'null', description: 'Your first name')
-        string(name: 'scope', defaultValue: '3', description: 'scope of cluster')
-        string(name: 'region', defaultValue: 'west US', description: 'location')
+        string(name: 'name', defaultValue: '', description: 'Your first name')
+        string(name: 'scope', defaultValue: '', description: 'scope of cluster')
+        string(name: 'region', defaultValue: '', description: 'location')
 
     }
     
 
     stages 
     {
-        stage('Start') {
+       stages {
+        stage('Clean Workspace') {
             steps {
-                echo "Hello ${params.name}"
-                echo "We using location is ${params.region} and scope of clucter is number ${params.scope}"
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                cleanWs()
             }
         }
+
         
-        stage('End') {
+        stage('parameters') {
             steps {
                 sh '''
-                echo '-----------'
-                pwd
-                echo '-----------'
-                ls
-                '''
+               
                 echo "This is additional test parrameter  ${params}"
                 echo "Bye ${params.name}"
             }
