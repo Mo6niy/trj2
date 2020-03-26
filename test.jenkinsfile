@@ -1,9 +1,9 @@
 pipeline {
     agent any
         parameters {
-        string(name: 'NAME', defaultValue: '', description: 'Your first name')
-        string(name: 'SCOPE', defaultValue: '', description: 'scope of cluster')
-        string(name: 'REGION', defaultValue: '', description: 'location')
+        string(name: 'NAME', defaultValue: 'AAAAA', description: 'Your first name')
+        string(name: 'SCOPE', defaultValue: '33333', description: 'scope of cluster')
+        string(name: 'REGION', defaultValue: 'WWWWWWW', description: 'location')
     }
        
     stages {
@@ -19,13 +19,6 @@ pipeline {
                 echo "Bye ${params.NAME}"
                 """
             }
-        }
-    }
-    post {
-        success {
-            mail to: 'Mo6niy@mail.ru',
-              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-              body: "Something is wrong with ${env.BUILD_URL}"
         }
     }
 }
