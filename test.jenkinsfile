@@ -1,9 +1,9 @@
 pipeline {
     agent any
         parameters {
-        string(name: 'NAME', defaultValue: 'AAAAA', description: 'Your first name')
-        string(name: 'SCOPE', defaultValue: '33333', description: 'scope of cluster')
-        string(name: 'REGION', defaultValue: 'WWWWWWW', description: 'location')
+        string(name: 'NAME', defaultValue: '', description: 'Your first name')
+        string(name: 'SCOPE', defaultValue: '', description: 'scope of cluster')
+        string(name: 'REGION', defaultValue: '', description: 'location')
     }
        
     stages {
