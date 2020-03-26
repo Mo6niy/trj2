@@ -17,7 +17,7 @@ pipeline {
                 sh """
                 echo "This is additional test parrameter  ${params}"
                 echo "Bye ${params.NAME}"
-                echo "location is ${REGION}"
+                echo "location is ${params.REGION}"
                 """
             }
         }
